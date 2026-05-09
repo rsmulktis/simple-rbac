@@ -1,0 +1,8 @@
+﻿# Conda build matrix configuration
+# Specifies the Python versions to build against.
+# Adjust as needed for your target environments.
+python:
+  - "3.9"
+  - "3.10"
+  - "3.11"
+  - "3.12"

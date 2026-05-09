@@ -1,0 +1,53 @@
+{% set version = "0.1.1" %}
+
+package:
+  name: simple-rbac
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - rbac
+    - rbac.acl
+    - rbac.context
+    - rbac.proxy
+  requires:
+    - pytest
+    - pytest-cov
+  source_files:
+    - tests/
+  commands:
+    - pytest tests/ -v
+
+about:
+  home: http://github.tonyseek.com/simple-rbac/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A simple role based access control utility
+  description: |
+    Simple RBAC is a straightforward role-based access control (RBAC) utility
+    for Python. It supports hierarchical roles and resources, allow/deny rules,
+    an identity context manager, and a proxy layer for convenient permission
+    checking.
+  doc_url: https://github.com/tonyseek/simple-rbac
+  dev_url: https://github.com/tonyseek/simple-rbac
+
+extra:
+  recipe-maintainers:
+    - tonyseek
+
